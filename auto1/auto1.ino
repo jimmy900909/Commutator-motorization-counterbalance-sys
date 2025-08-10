@@ -16,14 +16,15 @@ HX711 scale;
 float calibration_factor = 4180;  //For loadcell
 
 // Motor speed (0 - 255)
-const int motorSpeed = 220;
-const int remotorSpeed = 200;
-const int lsmotorSpeed = 140;
+const int threshold_emg = 75;
+//const int motorSpeed = 220;
+const int lsmotorSpeed = 170;
+const int remotorSpeed = 150;
 // Tension smoothing buffer
-const int bufferSize = 4;
+const int bufferSize = 3;
 float tensionBuffer[bufferSize];
 int bufferIndex = 0;
-
+bool emg=false;
 // Encoder tracking num
 volatile long encoderCount = 0;
 
@@ -90,7 +91,7 @@ void loop() {
   for (int i = 0; i < bufferSize; i++) {
     sum += tensionBuffer[i];
   }
-  float avgTension = (-1) * sum / bufferSize;  // Invert if necessary(depends on the side of the load cell)
+  float avgTension = sum / bufferSize;  // Invert if necessary(depends on the side of the load cell)
 
   // Safely read encoder count
   long count;
@@ -104,32 +105,62 @@ void loop() {
   Serial.print(" g | Encoder: ");
   Serial.println(count);
 
-  // Decrement ignoreIndex each loop if active
+  if(emg) {
+      analogWrite(AIN1, 255);
+      digitalWrite(AIN2, LOW); 
+      delay(150);
+      emg = false;
+  } // Decrement ignoreIndex each loop if active
+  else{
   if (ignoreIndex > 0) {
     ignoreIndex--;
-    //Serial.println("Retraction delay active → motor paused");
+    Serial.println("Retraction delay active → motor paused");
   } else {
     // Hysteresis range(depends on the cable weight/tension when it's naturally hang)
-    float lower_limit = 30.5;
-    float upper_limit = 36.0;
+    float lower_limit = 24.2;
+    float upper_limit = 27.0;
     //check the direction of the rotation  
     if (avgTension > upper_limit) {
-      //tighten
-      analogWrite(AIN1, remotorSpeed);
+      //loosen
+      if(avgTension > threshold_emg)
+      {//Fast and strong drag
+      analogWrite(AIN1, 255);
       digitalWrite(AIN2, LOW);
+      //Serial.println("strongdrag");  
+      delay(70);
+      
+      emg = true;
+      }
+      else{//normal drag scenerio
+      
+      analogWrite(AIN1, lsmotorSpeed);
+      digitalWrite(AIN2, LOW);
+      
+      delay(30);
+      Serial.println("normaldrag");
+            
+
+      }
     } else if (avgTension < lower_limit) {
-      // loosen
+      // tighten
       digitalWrite(AIN1, LOW);
-      analogWrite(AIN2, lsmotorSpeed);
-      ignoreIndex = 1;  // Pause motor next loop-- preventing over-sensitive
+      analogWrite(AIN2, remotorSpeed);
+      //Serial.println("retract");
+      delay(40);
+
+      ignoreIndex = 0;  // Pause motor next loop-- preventing over-sensitive
+
+      
     } else {
       // In range → Stop motor
       digitalWrite(AIN1, LOW);
       digitalWrite(AIN2, LOW);
+      //Serial.println('stop');
+      
     }
   }
-
-  delay(100);  // Loop timing--affects sensitivity 
+  }
+  delay(60);  // Loop timing--affects sensitivity 
 }
 
 void encoderISR() {
@@ -139,4 +170,8 @@ void encoderISR() {
     encoderCount++;
   else
     encoderCount--;
+}
+void stopMotor() {
+  digitalWrite(AIN1, LOW);
+  digitalWrite(AIN2, LOW);
 }
