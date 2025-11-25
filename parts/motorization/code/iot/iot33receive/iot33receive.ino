@@ -1,17 +1,20 @@
-// Nano 33 IoT Receiver: UDP "dir,steps" -> drive A4988
+// Nano 33 IoT Receiver: UDP "dir,steps" -> A4988 at 1/16 microstep
 #include <WiFiNINA.h>
 #include <WiFiUdp.h>
 
-const char* SSID = "concord.hippo_5ghz";
-const char* PASS = "n!/(n-k)!";
+const char* SSID = "Jimmys";
+const char* PASS = "0937333355";
+
 
 WiFiUDP udp;
 const uint16_t UDP_PORT = 9000;
 
 const int DIR_PIN  = 2;
 const int STEP_PIN = 3;
-const int EN_PIN   = 4;      // 若未接EN，程式可忽略此腳
-const int STEP_US  = 1200;   // 初始保守速度；數值越小越快
+const int EN_PIN   = 4;
+
+// 1/16 微步下要更快的脈衝，先給個保守值，之後可再調小加速
+int STEP_US  = 300;   // 每半週期(LOW/HIGH)的延遲，數值越小越快(可試 200、150、100)
 
 void stepN(int n){
   for(int i=0;i<n;i++){
@@ -25,8 +28,8 @@ void setup() {
   pinMode(DIR_PIN, OUTPUT);
   pinMode(STEP_PIN, OUTPUT);
   pinMode(EN_PIN, OUTPUT);
-  digitalWrite(EN_PIN, LOW); // 使能 A4988（LOW=Enable）
-
+  digitalWrite(EN_PIN, LOW); // 使能
+  delay(3000);
   Serial.print("WiFi connecting");
   WiFi.begin(SSID, PASS);
   while (WiFi.status() != WL_CONNECTED) { delay(300); Serial.print("."); }
@@ -35,6 +38,7 @@ void setup() {
 
   udp.begin(UDP_PORT);
   Serial.print("UDP listening on "); Serial.println(UDP_PORT);
+  Serial.println("Remember: A4988 MS1/MS2/MS3 = HIGH for 1/16 microstep.");
 }
 
 void loop() {
@@ -57,3 +61,4 @@ void loop() {
     Serial.print("Bad packet: "); Serial.println(buf);
   }
 }
+
