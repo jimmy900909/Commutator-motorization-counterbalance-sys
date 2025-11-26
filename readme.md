@@ -23,33 +23,30 @@ This project implements an **active counterbalance system** that:
 - Provides reproducible, tunable closed-loop control logic
 ---
 
-material:
+## material:
 motorization:
--Stepping Motor * 1 (17HS4401)
--A4988 Motor driver
--capacitor 470muF * 1 and 1000muF * 1
--arduino nano * 1
--
+- Stepping Motor * 1 (17HS4401)
+- A4988 Motor driver
+- capacitor 470muF * 1 and 1000muF * 1
+- arduino nano * 1
+
 
 counterbalance:
--N20 Gearmotor with encoder (100-200RPM) 144 is used in this testing
--DRV8833 motor driver
--
--arduino nano* 1
--
--
+- N20 Gearmotor with encoder (100-200RPM) 144 is used in this testing
+- DRV8833 motor driver
+- arduino nano* 1
 
 ## 🗂 Repository Structure
-project-root/
-├── code/
-│ └── auto1/ # Main firmware and scripts
-│ 
-│
-│ 
-├── parts/ #stl. and solidworks model
-│   ├── motorisation/ # model for commutator motorization
-│   └── counterbalance/ # parts and platform for counterbalance system 
-└── README.md
+- project-root/
+- ├── code/
+- │ └── auto1/ # Main firmware and scripts
+- │ 
+- │
+- │ 
+- ├── parts/ #stl. and solidworks model
+- │   ├── motorisation/ # model for commutator motorization
+- │   └── counterbalance/ # parts and platform for counterbalance system 
+- └── README.md
 
 
 
