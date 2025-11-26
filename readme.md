@@ -1,9 +1,64 @@
-This is a wireless counterbalance system that can adjust the length of the cable automatically for OpenEphys commutator while conducting freely moving animal experiment  
+# Active Counterbalance System for Freely-Moving Electrophysiology  
+### Real-time Tension Stabilization + 3D Printed Mechanical System + Closed-Loop Firmware
 
-#closed-loop Automatic Counterbalance animal experiment system 
+This repository contains the code, mechanical design files, and system description for an **active counterbalance system** combined with **customized torque-free commutator** that stabilizes tether tension and prevents entangle during freely-moving electrophysiology experiments.  
+This system is based on the engineering framework from my master thesis, but **this implementation uses a different commutator model** and a reorganized folder structure.
 
-#tension-free and biting-prevention for cable in the freely moving animal experiment
+---
 
-The toggling and dragging can seriously cause the artifacts to signal when doing a cable-connected behavior experiment on an awake and freely-moving animal. The automatic rotation commutator is widely used in labs and commercialized, however, to adjust the length of the cable is always depends on manual holding or passive counterbalance sys. As the hanged part would be bited by animal and the tension can constraint the movement, a active counterbalance system is needed for such animal experiment.  
+## 📌 Project Overview
 
-![示意圖](images/S__6602755.jpg)
+Tethered electrophysiology often suffers from:
+- Mechanical noise from cable tension/torque  
+- Slack formation causing entanglement  
+- Excessive pulling that may damage the headstage  
+- Behavioral interference in freely moving animals  
+
+This project implements an **active counterbalance system** that:
+- Measures real-time tension via load cell  
+- Runs an event-driven control algorithm (retraction/payout)  
+- Uses a motorized pulley to collect and release cable to maintain tension in a safe window  
+- Uses 3D printed mechanical components for compact integration  
+- Supports different commutator (this version uses: **customized 52 channels slip ring commutator**)  
+- Provides reproducible, tunable closed-loop control logic
+---
+
+material:
+motorization:
+-Stepping Motor * 1 (17HS4401)
+-A4988 Motor driver
+-capacitor 470muF * 1 and 1000muF * 1
+-arduino nano * 1
+-
+
+counterbalance:
+-N20 Gearmotor with encoder (100-200RPM) 144 is used in this testing
+-DRV8833 motor driver
+-
+-arduino nano* 1
+-
+-
+
+## 🗂 Repository Structure
+project-root/
+├── code/
+│ └── auto1/ # Main firmware and scripts
+│ 
+│
+│ 
+├── parts/ #stl. and solidworks model
+│   ├── motorisation/ # model for commutator motorization
+│   └── counterbalance/ # parts and platform for counterbalance system 
+└── README.md
+
+
+
+The counterbalance system converts cable tension into a measurable compression force using a **pulley-mediated force-redirection mechanism**.  
+The controller:
+1. Reads tension (80 Hz)
+2. Applies dual-EMA filtering  
+3. Detects events (slack, over-tension, impact)
+4. Controls motor payout/retraction  
+5. Maintains tension in a safe range  
+
+
