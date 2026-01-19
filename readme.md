@@ -7,10 +7,6 @@ This system is based on the engineering framework from my master thesis, but **t
 
 ---
 
-<img width="3156" height="2125" alt="circuit" src="https://github.com/user-attachments/![full system with no box](https://github.com/user-attachments/assets/264f2faf-0659-4a02-a4c4-6fa93b967e2b)
-assets/e3c446ee-7b6c-4c99-9a0c-275075660935" />
-
-
 https://github.com/user-attachments/assets/3104b9ad-547f-40e5-a1b2-401eba12acd4
 
 
@@ -43,6 +39,7 @@ counterbalance:
 - N20 Gearmotor with encoder (100-200RPM) 144 is used in this testing
 - DRV8833 motor driver
 - arduino nano* 1
+<img width="3156" height="2125" alt="circuit" src="https://github.com/user-attachments/assets/ed0563bc-b112-487b-9aee-da2bee69ee00" />
 
 ## 🗂 Repository Structure
 - project-root/
