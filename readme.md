@@ -6,6 +6,10 @@ This system is based on the engineering framework from my master thesis, but **t
 
 ---
 
+https://github.com/user-attachments/assets/e111ccbb-3ce3-45f4-8e0e-76df14b831a8
+
+
+
 ## 📌 Project Overview
 
 Tethered electrophysiology often suffers from:
