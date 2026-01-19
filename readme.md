@@ -6,7 +6,12 @@ This system is based on the engineering framework from my master thesis, but **t
 
 ---
 
-https://github.com/user-attachments/assets/e111ccbb-3ce3-45f4-8e0e-76df14b831a8
+https://github.com/user-attachments/assets/e111ccbb-3ce3-45f4-8e0e-76df14b831a8  
+![full system with no box](http![Uploading circuit.png…]()
+s://github.com/user-attachments/assets/3b9943a8-a7e0-417e-99f3-b2a17a6bf771)
+
+
+![Uploading circuit.png…]()
 
 
 
