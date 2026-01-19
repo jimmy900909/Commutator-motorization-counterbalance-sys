@@ -28,6 +28,9 @@ This project implements an **active counterbalance system** that:
 - Provides reproducible, tunable closed-loop control logic
 ---
 
+![motorization](https://github.com/user-attachments/assets/d7947978-d306-43dd-a18c-0365b9fccbbf)
+
+
 ## material:
 motorization:
 - Stepping Motor * 1 (17HS4401)
