@@ -1,6 +1,7 @@
 
 # Active Counterbalance System for Freely-Moving Electrophysiology  
 ### Real-time Tension Stabilization + 3D Printed Mechanical System + Closed-Loop Firmware
+Author:Wei Ching Ling
 
 This repository contains the code, mechanical design files, and system description for an **active counterbalance system** combined with **customized torque-free commutator** that stabilizes tether tension and prevents entangle during freely-moving electrophysiology experiments.  
 This system is based on the engineering framework from my master thesis, but **this implementation uses a different commutator model** and a reorganized folder structure.
