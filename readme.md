@@ -1,5 +1,4 @@
 
-https://github.com/user-attachments/assets/e5778495-e6f5-4128-a01f-78d7be968a1c
 # Active Counterbalance System for Freely-Moving Electrophysiology  
 ### Real-time Tension Stabilization + 3D Printed Mechanical System + Closed-Loop Firmware
 
