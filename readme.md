@@ -35,13 +35,13 @@ motorization:
 - Stepping Motor * 1 (17HS4401)
 - A4988 Motor driver
 - capacitor 470muF * 1 and 1000muF * 1
-- arduino nano * 1
+- arduino nano * 1 
 
 
 counterbalance:
 - N20 Gearmotor with encoder (100-200RPM) 144 is used in this testing
 - DRV8833 motor driver
-- arduino nano* 1
+- arduino nano* 1 or ESP 32 * 1
 <img width="3156" height="2125" alt="circuit" src="https://github.com/user-attachments/assets/ed0563bc-b112-487b-9aee-da2bee69ee00" />
 
 ## 🗂 Repository Structure
