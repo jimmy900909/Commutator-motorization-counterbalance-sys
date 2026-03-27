@@ -47,8 +47,9 @@ counterbalance:
 ## 🗂 Repository Structure
 - project-root/
 - ├── code/
-- │ └── auto1/ # Main firmware and scripts
-- │ 
+- │ └── counterblance
+- │    └── /nano_version/auto1/ # Main firmware and scripts
+- │    └──/esp_version
 - │
 - │ 
 - ├── parts/ #stl. and solidworks model
