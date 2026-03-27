@@ -6,6 +6,7 @@ Author:Wei Ching Ling
 This repository contains the code, mechanical design files, and system description for an **active counterbalance system** combined with **customized torque-free commutator** that stabilizes tether tension and prevents entangle during freely-moving electrophysiology experiments.  
 This system is based on the engineering framework from my master thesis, but **this implementation uses a different commutator model** and a reorganized folder structure.
 
+to use the system, check the manual for the guide
 ---
 
 https://github.com/user-attachments/assets/3104b9ad-547f-40e5-a1b2-401eba12acd4
@@ -48,8 +49,8 @@ counterbalance:
 - project-root/
 - ├── code/
 - │ └── counterblance
-- │    └── /nano_version/auto1/ # Main firmware and scripts
-- │    └──/esp_version
+- │    └── /nano_version/auto1/ # Main firmware and scripts for nano
+- │    └──/esp_version/auto_esp/ # Main firmware and scripts for esp
 - │
 - │ 
 - ├── parts/ #stl. and solidworks model
