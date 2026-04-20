@@ -68,7 +68,9 @@ The controller:
 4. Controls motor payout/retraction  
 5. Maintains tension in a safe range  
 
-Hardware Design: The structure was printed by Prusa 3DPrinter, 
+Hardware Design: The structure was printed by Prusa 3DPrinter, for motortization part, the gear set are driven by the step motor, fix the motor on the square space on the side and insert the shaft into the z14 gear to motorization the rotation of the commutator.
+
+for the counterbalance sys, install the circuit above on to the platform at the bottom. can also check  https://github.com/jimmy900909/Commutator-counterbalance-sys-of-openEphys-coaxial-torque-free-commutator for more detail of the platform. Insert the gear motor to the space and connect the pully on as the side retract and release the thread.
 
 <img width="1334" height="741" alt="image" src="https://github.com/user-attachments/assets/2f310377-0620-4605-a28e-11fffaea18ea" />
 
