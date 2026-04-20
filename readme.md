@@ -68,4 +68,7 @@ The controller:
 4. Controls motor payout/retraction  
 5. Maintains tension in a safe range  
 
+Hardware Design: The structure was printed by Prusa 3DPrinter, 
+
+<img width="1334" height="741" alt="image" src="https://github.com/user-attachments/assets/2f310377-0620-4605-a28e-11fffaea18ea" />
 
